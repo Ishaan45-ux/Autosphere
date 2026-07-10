@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>REGISTERATION PAGE</title>
+<link rel="stylesheet" th:href="@{/css/style2.css}">
+</head>
+<body>
+
+<header>
+	<h1>MyApp</h1>
+</header>
+
+<div th:replace="mainheader :: headerFragment"></div>
+<main>
+	<div class = "form-container">
+		<h2>Register</h2>
+		<form th:action = "@{/register1}" method = "post" th:object = "${user}">
+		<label for ="username">Username</label>
+		<input type = "text" id = "username" th:field = "*{username}" required>
+		
+		<label for ="email">E-mail</label>
+		<input type = "email" id = "email" th:field = "*{email}" required>
+		
+		<label for ="password">Password</label>
+		<input type = "password" id = "password" th:field = "*{password}" required>
+		
+		<label for ="role">Role</label>
+		<select id = "role" th:field = "*{role}">
+		<option value = "USER" selected>USER</option>
+		<option value = "ADMIN">SELLER</option>
+		</select>
+		
+		<label>
+			<input type = "checkbox" th:field="*{enabled}">Enable Account
+		</label>
+		<button type = "submit">Register</button>
+		</form>
+	</div>
+</main>
+
+<footer>
+	<p>&copy; 2025 Shopping. All rights are reserved.</p>
+</footer>
+</body>
+</html>

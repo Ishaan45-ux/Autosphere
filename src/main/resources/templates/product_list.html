@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PRODUCT VIEW</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="adminheader :: headerFragment"></div>
+<h2>Product List</h2>
+<a href = "/addproduct" class = "add-button">Add New Product</a>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Price</th>
+		<th>Stock</th>
+		<th>Image</th>
+		<th>Actions</th>
+	</tr>
+	<tr th:each = "product:${products}">
+		<td th:text = "${product.name}"></td>
+		<td th:text = "${product.description}"></td>
+		<td th:text = "${product.price}"></td>
+		<td th:text = "${product.stock}"></td>
+		<td><img alt="Product Image" th:src="@{${product.imageUrl}}" /></td>
+		<td><a th:href = "@{'/edit/' + ${product.id}}">Edit</a>|<a th:href = "@{'/delete/'+${product.id}}" onclick = "return confirm('are you sure to delete this product?')">Delete</a></td>
+		</tr>
+</table>
+</body>
+</html>

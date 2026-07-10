@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Your cart</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="userheader :: headerFragment"></div>
+
+<h2>Your Shopping Cart</h2>
+
+<div th:if="${#lists.isEmpty(cartItems)}" class="empty-message">
+    Your cart is currently empty.
+</div>
+
+<div th:if="${!#lists.isEmpty(cartItems)}">
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price (₹)</th>
+                <th>Quantity</th>
+                <th>Subtotal (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${cartItems}">
+                <td th:text="${item.productName}">Product Name</td>
+                <td th:text="${item.price}">Price</td>
+                <td th:text="${item.quantity}">Quantity</td>
+            	 <td th:with="itemTotal=${item.price.multiply(T(java.math.BigDecimal).valueOf(item.quantity.longValue()))}" 
+                    th:text="${itemTotal}">
+                    Subtotal
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <!-- This <tr> is OUTSIDE the <tbody> loop but still inside the <table> -->
+            <tr>
+                <td colspan="3"><strong>Grand Total:</strong></td>
+                
+                <!-- Calculate and display the grand total here -->
+                <!-- The expression below projects the individual item totals and sums them up -->
+                <td th:with="grandTotal=${#aggregates.sum(cartItems.![price.multiply(T(java.math.BigDecimal).valueOf(quantity.longValue()))])}">
+                    <strong th:text="${grandTotal}">0.00</strong>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <form method="post" th:action="@{/api/cart/checkout}">
+    <button class="checkout-btn" type="submit">Proceed to Checkout</button>
+    
+</form>
+</div>
+
+</body>
+</html>

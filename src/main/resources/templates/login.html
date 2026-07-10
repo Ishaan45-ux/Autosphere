@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login page</title>
+<link rel="stylesheet" th:href="@{/css/style2.css}">
+</head>
+<body>
+
+<div th:replace="~{mainheader :: headerFragment}"></div>	
+	<main>
+		<div class="form-container">
+			<h2>Login</h2>
+			<form th:action="@{/login1}" method = "post" th:object="${user}">
+			<label for ="username">Username</label>
+			<input type = "text" id = "username" th:field = "*{username}" required>
+			<br>
+			<label for ="email">E-mail</label>
+			<input type = "email" id = "email" th:field = "*{email}" required>
+			<br>
+			<label for ="password">Password</label>
+			<input type = "password" id = "password" th:field = "*{password}" required>
+		<br>
+			<button type = "Submit">Login</button>
+			</form>
+		</div>
+	</main>
+	
+<footer>
+	<p>&copy; 2025 Shopping. All rights reserved.</p>
+</footer>
+</body>
+</html>

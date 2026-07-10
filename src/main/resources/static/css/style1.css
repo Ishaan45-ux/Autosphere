@@ -1,0 +1,186 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+
+/* --- 1. THE VIBE (Variables) --- */
+:root {
+    --bg-deep: #050505;
+    --neon-cyan: #00f3ff;
+    --neon-pink: #ff00aa;
+    --neon-lime: #ccff00;
+    --glass: rgba(255, 255, 255, 0.05);
+}
+
+/* --- 2. THE LIVING BACKGROUND --- */
+@keyframes meshGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    
+    /* Deep animated gradient background */
+    background: linear-gradient(-45deg, #1a0b2e, #11001c, #2e0225, #0f172a);
+    background-size: 400% 400%;
+    animation: meshGradient 15s ease infinite;
+}
+
+/* --- 3. THE LIQUID HEADER --- */
+@keyframes textFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 10px;
+}
+
+header h1 {
+    font-size: 4rem; /* Huge text */
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    
+    /* The Liquid Gradient Effect */
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-lime), var(--neon-cyan));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textFlow 3s linear infinite; /* Fast flowing color */
+    
+    /* Subtle neon glow */
+    filter: drop-shadow(0 0 15px rgba(255, 0, 170, 0.3));
+}
+
+/* --- 4. HOLOGRAPHIC NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 40px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 15px 40px;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+    
+    /* The Glass Pill */
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    position: relative;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+
+/* The Underline Zip Animation */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--neon-lime);
+    transition: width 0.3s ease-out;
+    box-shadow: 0 0 10px var(--neon-lime);
+}
+
+nav a:hover {
+    color: var(--neon-lime);
+    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* --- 5. HERO CONTENT & LEVITATING IMAGE --- */
+main {
+    flex: 1;
+    text-align: center;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main h2 {
+    font-size: 2.5rem;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+}
+
+main p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+@keyframes float {
+    10% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+main img {
+    max-width: 70% !important; 
+    width: 650px !important; 
+    height: auto;
+    
+    /* Double Neon Border */
+    border: 3px solid transparent;
+    background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink)) border-box; 
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    
+    /* Box Shadow Glow */
+    box-shadow: 
+        0 0 0 3px rgba(0,0,0,0.5), /* Inner spacing */
+        0 20px 60px rgba(0, 243, 255, 0.2), /* Cyan Glow */
+        0 0 0 6px rgba(255, 255, 255, 0.05); /* Outer glass ring */    
+    opacity: 0;
+    animation: float 6s ease-in-out infinite;
+    transition: all 0.4s ease;
+}
+
+main img:hover {
+    transform: perspective(1000px) rotateX(2deg) scale(1.03);
+    /* Intensify glow on hover */
+    box-shadow: 
+        0 0 40px rgba(0, 243, 255, 0.4),
+        0 30px 80px rgba(188, 19, 254, 0.5); 
+}
+
+/* --- 6. FOOTER --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    letter-spacing: 2px;
+}

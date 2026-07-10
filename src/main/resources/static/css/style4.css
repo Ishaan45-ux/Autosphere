@@ -1,0 +1,227 @@
+@charset "UTF-8";/* static/css/style4.css - Product Form (Teal & Lime Theme) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+:root {
+    /* Teal/Dark Base */
+    --bg-dark: #001f3f;       /* Very deep navy/teal */
+    --form-bg: rgba(0, 31, 63, 0.7); /* Dark Glass */
+    
+    /* Neon Accents */
+    --neon-lime: #ccff00;      /* Electric Lime */
+    --neon-teal: #00ffff;      /* Bright Cyan/Teal */
+    --text-white: #f8fafc;
+    --text-muted: #a0aec0;
+}
+
+/* =========================================
+   1. BODY & GLOBAL STYLES
+   ========================================= */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    /* Subtle background texture/gradient */
+    background-image: radial-gradient(circle at center, #003366 1px, transparent 1px);
+    background-size: 50px 50px;
+    padding: 40px 20px;
+    margin: 0;
+    color: var(--text-white);
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    /* Funky Gradient Title */
+    background: linear-gradient(to right, var(--neon-teal), var(--neon-lime));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3));
+    margin: 20px 0 50px;
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   2. FORM CONTAINER (Dark Glass)
+   ========================================= */
+
+form {
+    max-width: 900px;
+    margin: 0 auto;
+    
+    /* Classy Dark Glass Effect */
+    background: var(--form-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 255, 0.1); /* Subtle Neon Border */
+    
+    padding: 40px;
+    border-radius: 25px;
+    /* Stronger shadow for floating effect */
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5); 
+    transition: all 0.5s ease;
+}
+
+form:hover {
+    box-shadow: 0 20px 60px rgba(0, 255, 255, 0.2); /* Teal glow on hover */
+}
+
+/* =========================================
+   3. FORM ELEMENTS & INPUTS
+   ========================================= */
+
+form label {
+    display: block;
+    margin: 20px 0 8px;
+    font-weight: 600;
+    color: var(--neon-lime); /* Neon Lime Labels */
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    
+    /* Dark Input Fields */
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+/* Focus State - The Funky Glow */
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--neon-teal); /* Bright Teal Border */
+    /* Neon Glow Effect */
+    box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.2), 
+                0 0 15px rgba(0, 255, 255, 0.5); 
+    transform: translateY(-2px);
+}
+
+form textarea {
+    min-height: 150px; /* Taller textarea */
+    resize: vertical;
+}
+
+/* =========================================
+   4. BUTTONS & ACTIONS
+   ========================================= */
+
+form button {
+    margin-top: 40px;
+    padding: 15px 50px;
+    
+    /* Funky Gradient Button */
+    background: linear-gradient(135deg, var(--neon-teal), var(--neon-lime));
+    color: var(--bg-dark); /* Dark text on bright button */
+    
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+form button:hover {
+    background: linear-gradient(135deg, var(--neon-teal), var(--neon-lime));
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(204, 255, 0, 0.6); /* Lime Glow */
+}
+
+/* Image Preview in Form */
+form img {
+    margin-top: 15px;
+    border-radius: 12px;
+    border: 2px solid var(--neon-teal); /* Neon frame */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    max-width: 100%;
+    height: auto;
+}
+
+/* Back Link Style */
+a[href*="products"] {
+    display: inline-block;
+    margin-top: 30px;
+    color: var(--neon-lime);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border-bottom: 2px dotted var(--neon-lime); /* Funky dotted underline */
+    padding-bottom: 2px;
+}
+
+a[href*="products"]:hover {
+    color: var(--neon-teal);
+    text-decoration: none;
+    filter: drop-shadow(0 0 5px var(--neon-lime));
+}
+
+
+/* --- 4. HOLOGRAPHIC NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 40px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 15px 40px;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+    
+    /* The Glass Pill */
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    position: relative;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+
+/* The Underline Zip Animation */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--neon-lime);
+    transition: width 0.3s ease-out;
+    box-shadow: 0 0 10px var(--neon-lime);
+}
+
+nav a:hover {
+    color: var(--neon-lime);
+    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+ 

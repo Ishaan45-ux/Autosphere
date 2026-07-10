@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<div th:replace="userheader :: headerFragment"></div>
+	
+	<h2 style ="text-align:center;">Available Products</h2>
+	
+	<div class="product-grid">
+		<div class="product" th:each="product : ${products}">
+		
+		 <h3 th:text="${product.id}"></h3>
+    <h3 th:text="${product.name}"></h3>
+    <img th:src="${product.imageUrl}" th:attr="data-img=${product.imageUrl}" alt="Product Image" onclick="showFullImage(this)">
+    <p th:text="${product.description}"></p>
+    <p><strong>Price:</strong> ₹<span th:text="${product.price}"></span></p>
+    
+    <a th:href="@{'/api/cart/addToCart/'+${product.id}+'?userId='+${user.id}}" class="add-to-cart">Add to Cart</a>
+</div>	
+</div>
+<div class="full-image" id="fullImageContainer">
+    <span class="close-btn" onclick="closeFullImage()">&times;</span>
+    <img id="fullImage" src="" alt="Full Product Image">
+</div>
+
+<div style="text-align:center;margin:20px;">
+    <a th:href="@{/userhome}" style="text-decoration:none;padding:10px 20px;background-color:#007BFF;color:white;border-radius:5px;">
+        Go Home
+    </a>
+</div>
+
+<script>
+function showFullImage(imgElement) {
+    const url = imgElement.getAttribute("data-img");
+    document.getElementById('fullImage').src = url;
+    document.getElementById('fullImageContainer').style.display = 'block';
+}
+
+function closeFullImage() {
+    document.getElementById('fullImageContainer').style.display = 'none';
+}
+</script>
+	
+</body>
+</html>

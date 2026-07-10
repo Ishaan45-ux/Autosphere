@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>User fragment</title>
+</head>
+<body>
+<!-- Header fragment -->
+<div th:fragment="headerFragment">  
+<nav>
+	<ul>
+		<li><a th:href="@{/viewshoppinguser}">View Products</a></li>
+		<li><a th:href="@{/api/cart/mycart}">View my cart</a></li>
+		<li><a th:href="@{/logout}">Logout</a></li>
+	</ul>
+</nav>
+</div>
+</body>
+</html>

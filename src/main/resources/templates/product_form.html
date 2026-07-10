@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PRODUCT ADDITION</title>
+<link rel="stylesheet" th:href="@{/css/style4.css}">
+</head>
+<body>
+	
+	<div th:replace="adminheader :: headerFragment"></div>
+	<h1 th:text="${product.id == null ? 'Add Product' : 'Edit Product'}"></h1>
+	<form th:action="@{/addproduct1}" th:object="${product}" method="post" enctype="multipart/form-data">
+	<input type="hidden" th:field="*{id}"/>
+	
+	    <label >Name:</label>
+		<input type="text" th:field="*{name}" required/>
+		
+		<label >Description:</label>
+		<textarea  th:field="*{description}"></textarea>
+		
+		<label >Price:</label>
+		<input type="number" th:field="*{price}" step="0.01" required/>
+		
+		<label >Stock</label>
+		<input type="number" th:field="*{stock}" />
+		
+		<label >Upload Image:</label>
+		<input type="file" name="image" />
+		
+		<div th:if="${product.imageUrl != null}">
+            <img th:src="@{${product.imageUrl}}" alt="Product Image" width="150" />
+		</div>		
+		
+		<button type="submit">Save</button>
+	</form>
+	
+	<a th:href="@{/products}">Back to List</a>
+	
+</body>
+</html>
